@@ -1,0 +1,255 @@
+/* ------------------------------
+   Reset + variáveis globais
+------------------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-gradient: linear-gradient(135deg, #1e3c72, #2a5298);
+  --card-bg: rgba(255, 255, 255, 0.15);
+  --primary: #ff9800;
+  --primary-hover: #e68900;
+  --success: #4caf50;
+  --error: #f44336;
+  --text: #f9fafb;
+  --radius: 14px;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  --transition: all 0.3s ease;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: var(--bg-gradient);
+  min-height: 100vh;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 15px;
+}
+
+/* ------------------------------
+   Container principal
+------------------------------ */
+.container {
+  width: 100%;
+  max-width: 950px;
+  flex: 1;
+}
+
+/* ------------------------------
+   Cabeçalho
+------------------------------ */
+header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+header h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  font-weight: 400;
+  color: #fff;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+header p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ------------------------------
+   Cards com efeito glass
+------------------------------ */
+.card {
+  background: var(--card-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 28px;
+  margin-bottom: 22px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hidden {
+  display: none;
+}
+
+/* ------------------------------
+   Perguntas
+------------------------------ */
+#question-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  margin-bottom: 14px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+#question {
+  margin: 18px 0 26px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* ------------------------------
+   Alternativas
+------------------------------ */
+.choices {
+  display: grid;
+  gap: 14px;
+}
+
+.choices button {
+  padding: 14px;
+  border-radius: var(--radius);
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: left;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.choices button:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.choices button.correct {
+  background: var(--success);
+  color: #fff;
+  transform: scale(1.02);
+}
+
+.choices button.wrong {
+  background: var(--error);
+  color: #fff;
+  transform: scale(0.98);
+}
+
+/* ------------------------------
+   Barra de status
+------------------------------ */
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 22px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ------------------------------
+   Fim de jogo
+------------------------------ */
+#end-screen h2 {
+  margin-bottom: 14px;
+  color: #fff;
+  font-size: 1.8rem;
+}
+
+#end-screen input {
+  width: 100%;
+  padding: 12px;
+  margin: 16px 0;
+  border-radius: var(--radius);
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+#end-screen input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ------------------------------
+   Botões
+------------------------------ */
+.buttons {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.buttons button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--primary);
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: var(--transition);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.buttons button:hover {
+  background: var(--primary-hover);
+  transform: translateY(-3px) scale(1.03);
+}
+
+/* ------------------------------
+   Placar
+------------------------------ */
+#leaderboard h3 {
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+#leaderboard-list {
+  margin-top: 8px;
+  padding-left: 20px;
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+#leaderboard-list li {
+  margin-bottom: 6px;
+}
+
+/* ------------------------------
+   Rodapé
+------------------------------ */
+footer {
+  text-align: center;
+  padding: 18px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ------------------------------
+   Responsividade
+------------------------------ */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 2.2rem;
+  }
+
+  #question {
+    font-size: 1.15rem;
+  }
+
+  .choices button {
+    font-size: 0.95rem;
+    padding: 12px;
+  }
+
+  .buttons button {
+    font-size: 0.9rem;
+    padding: 10px 16px;
+  }
+}

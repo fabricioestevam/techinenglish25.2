@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz Interativo</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>SUPER QUIZ</h1>
+      <p>Responda as perguntas e veja sua pontuação!</p>
+    </header>
+
+    <main>
+      <!-- Tela de Quiz -->
+      <section id="quiz" class="card">
+        <div id="question-header">
+          <span id="question-category">Categoria</span>
+          <span id="timer">Tempo: 30s</span>
+        </div>
+        <div id="question">Aqui vem a pergunta...</div>
+        <div class="choices" id="choices"></div>
+        <div class="status-bar">
+          <span id="progress">1/10</span>
+          <span id="score">Pontos: 0</span>
+        </div>
+      </section>
+
+      <!-- Tela final -->
+      <section id="end-screen" class="card hidden">
+        <h2>Fim do Quiz!</h2>
+        <p>Sua pontuação final foi: <span id="final-score">0</span></p>
+        <input type="text" id="player-name" placeholder="Digite seu nome" />
+        <div class="buttons">
+          <button id="save-score">Salvar</button>
+          <button id="restart">Jogar novamente</button>
+        </div>
+        <h3>Se ficar em primeiro vai ganhar um morango do amor de pistache!</h3>
+      </section>
+
+      <!-- Ranking -->
+      <section id="leaderboard" class="card">
+        <h3>Ranking</h3>
+        <ol id="leaderboard-list"></ol>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <p>Desenvolvido pela fera.</p>
+  </footer>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+</body>
+</html>

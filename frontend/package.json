@@ -1,0 +1,11 @@
+{
+  "name": "quiz-frontend",
+  "version": "1.0.0",
+  "description": "Frontend do Quiz Interativo",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'Frontend build completed'",
+    "dev": "python -m http.server 8080",
+    "start": "npm run dev"
+  }
+}
