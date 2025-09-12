@@ -1,4 +1,4 @@
-const questions = [
+const questoes = [
   { topic: "Present Simple", difficulty: "fácil", q: "He ____ to school every day.", choices: ["go", "goes", "going", "gone"], a: 1 },
   { topic: "Present Continuous", difficulty: "médio", q: "She ____ (study) right now.", choices: ["studies", "is studying", "study", "was studying"], a: 1 },
   { topic: "Future (Will)", difficulty: "fácil", q: "I think it ____ rain tomorrow.", choices: ["is", "will", "was", "would"], a: 1 },
@@ -38,12 +38,61 @@ const finalScoreEl = document.getElementById("final-score");
 const nameInput = document.getElementById("player-name");
 const leaderboardList = document.getElementById("leaderboard-list");
 
-function iniciarQuestao() {
-  if (index >= questions.length) return finalizarQuiz();
+// NOVA FUNÇÃO: Mostrar feedback visual baseado na pontuação
+function showScoreFeedback(score) {
+  const feedbackContainer = document.getElementById('score-feedback');
+  const feedbackImage = document.getElementById('feedback-image');
+  const feedbackMessage = document.getElementById('feedback-message');
+  
+  if (!feedbackContainer) return; // Se não existir o elemento, não faz nada
+  
+  let imageUrl = '';
+  let message = '';
+  let category = '';
+  
+  // Calcular percentual (assumindo pontuação máxima de ~420 pontos)
+  const maxScore = questoes.length * 20; // Máximo possível
+  const percentual = (score / maxScore) * 100;
+  
+  if (percentual >= 80) {
+    // Excelente (80%+)
+    imageUrl = 'https://msabores.com/wp-content/uploads/2025/07/Design-sem-nome-12.webp';
+    message = ' Esse é o seu morango do amor supremo';
+    category = 'excellent';
+  } else if (percentual >= 60) {
+    // Bom (60-79%)
+    imageUrl = 'https://static.ndmais.com.br/2025/07/morango-do-amor-em-blumenau-saiba-onde-encontrar-2.jpg';
+    message = ' MUITO BOM! Esse é o seu morango do amor';
+    category = 'good';
+  } else if (percentual >= 40) {
+    // Regular (40-59%)
+    imageUrl = 'https://cdn.atarde.com.br/img/Artigo-Destaque/1340000/1200x720/Morango-do-Amor-viraliza-zera-estoques-e-muda-roti0134472100202507231256-ScaleDownProportional.webp?fallback=https%3A%2F%2Fcdn.atarde.com.br%2Fimg%2FArtigo-Destaque%2F1340000%2FMorango-do-Amor-viraliza-zera-estoques-e-muda-roti0134472100202507231256.jpg%3Fxid%3D6738802%26resize%3D1000%252C500%26t%3D1757663084&xid=6738802';
+    message = ' PODE MELHORAR! Esse é o seu moragndo do amor';
+    category = 'average';
+  } else {
+    // Precisa melhorar (0-39%)
+    imageUrl = 'https://s2-receitas.glbimg.com/1oyDo_1nvBhxW5qHc87L1g4-HLg=/0x0:800x418/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_1f540e0b94d8437dbbc39d567a1dee68/internal_photos/bs/2025/F/W/VGXMJRRjiqwxvQjF8BRg/morango-do-amor.png';
+    message = 'CONTINUE ESTUDANDO! Esse é o seu morango do amor';
+    category = 'poor';
+  }
+  
+  // Atualizar elementos
+  feedbackImage.src = imageUrl;
+  feedbackMessage.textContent = message;
+  
+  // Remover classes anteriores e adicionar nova
+  feedbackContainer.className = 'feedback-container show ' + category;
+  
+  // Mostrar o feedback
+  feedbackContainer.style.display = 'block';
+}
 
-  const q = questions[index];
+function iniciarQuestao() {
+  if (index >= questoes.length) return finalizarQuiz(); 
+
+  const q = questoes[index]; 
   questionEl.textContent = q.q;
-  progressEl.textContent = `${index + 1}/${questions.length}`;
+  progressEl.textContent = `${index + 1}/${questoes.length}`;
   categoryEl.textContent = `${q.topic} - ${q.difficulty}`;
   choicesEl.innerHTML = "";
 
@@ -58,7 +107,7 @@ function iniciarQuestao() {
 }
 
 function verificarResposta(i) {
-  const q = questions[index];
+  const q = questoes[index]; 
   const buttons = choicesEl.querySelectorAll("button");
   
   // Desabilitar todos os botões
@@ -92,7 +141,7 @@ function resetarTimer() {
       // Simular resposta errada quando o tempo acaba
       const buttons = choicesEl.querySelectorAll("button");
       buttons.forEach(btn => btn.disabled = true);
-      buttons[questions[index].a].classList.add("correct");
+      buttons[questoes[index].a].classList.add("correct"); 
       
       index++;
       setTimeout(iniciarQuestao, 1500);
@@ -105,6 +154,9 @@ function finalizarQuiz() {
   quizEl.classList.add("hidden");
   endScreenEl.classList.remove("hidden");
   finalScoreEl.textContent = score;
+  
+  //Mostrar feedback visual
+  showScoreFeedback(score);
 }
 
 function salvarPlacar() {
@@ -130,7 +182,6 @@ function renderizarPlacar() {
   });
 }
 
-// Event listeners
 document.getElementById("save-score").onclick = salvarPlacar;
 document.getElementById("restart").onclick = () => location.reload();
 

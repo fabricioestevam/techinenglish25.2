@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Quiz Interativo</title>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Bebas+Neue&display=swap"
+    rel="stylesheet">
 
   <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <div class="container">
     <header>
@@ -44,6 +47,11 @@
         </div>
         <h3>Se ficar em primeiro vai ganhar um morango do amor de pistache!</h3>
       </section>
+      <!-- Feedback visual da pontuação -->
+      <section id="score-feedback" class="card feedback-container" style="display: none;">
+        <img id="feedback-image" src="" alt="Feedback da pontuação">
+        <div id="feedback-message"></div>
+      </section>
 
       <!-- Ranking -->
       <section id="leaderboard" class="card">
@@ -54,10 +62,11 @@
   </div>
 
   <footer>
-    <p>Desenvolvido pela fera.</p>
+    <p>Desenvolvido por Fabricio Estevam, Gustavo José, jhenifer Mayara, Maria da Penha, Ezaú</p>
   </footer>
 
   <!-- JS -->
   <script src="script.js"></script>
 </body>
+
 </html>
