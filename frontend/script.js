@@ -66,8 +66,8 @@ function showScoreFeedback(score) {
     category = 'good';
   } else if (percentual >= 40) {
     // Regular (40-59%)
-    imageUrl = 'https://cdn.atarde.com.br/img/Artigo-Destaque/1340000/1200x720/Morango-do-Amor-viraliza-zera-estoques-e-muda-roti0134472100202507231256-ScaleDownProportional.webp?fallback=https%3A%2F%2Fcdn.atarde.com.br%2Fimg%2FArtigo-Destaque%2F1340000%2FMorango-do-Amor-viraliza-zera-estoques-e-muda-roti0134472100202507231256.jpg%3Fxid%3D6738802%26resize%3D1000%252C500%26t%3D1757663084&xid=6738802';
-    message = ' PODE MELHORAR! Esse é o seu moragndo do amor';
+    imageUrl = 'https://msabores.com/wp-content/uploads/2025/07/Design-sem-nome-12.webp';
+    message = ' Esse é o seu morango do amor SUPREMO';
     category = 'average';
   } else {
     // Precisa melhorar (0-39%)
