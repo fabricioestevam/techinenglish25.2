@@ -51,8 +51,10 @@ function showScoreFeedback(score) {
   let category = '';
   
   // Calcular percentual (assumindo pontuação máxima de ~420 pontos)
-  const maxScore = questoes.length * 20; // Máximo possível
+  let possibleScores = questoes.map(item => pontos[item.difficulty]);
+  let maxScore = possibleScores.reduce((a, b) => a + b);
   const percentual = (score / maxScore) * 100;
+  console.log("Pontos: ", score, "\nPercentual: ", percentual);
   
   if (percentual >= 80) {
     // Excelente (80%+)
@@ -66,18 +68,19 @@ function showScoreFeedback(score) {
     category = 'good';
   } else if (percentual >= 40) {
     // Regular (40-59%)
-    imageUrl = 'https://msabores.com/wp-content/uploads/2025/07/Design-sem-nome-12.webp';
-    message = ' Esse é o seu morango do amor SUPREMO';
+    imageUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8llVVRArpL5cdLDJH2lJp6uJ0y1GaVutkFw&s';
+    message = ' Esse é o seu morango do amor mediano';
     category = 'average';
   } else {
     // Precisa melhorar (0-39%)
-    imageUrl = 'https://s2-receitas.glbimg.com/1oyDo_1nvBhxW5qHc87L1g4-HLg=/0x0:800x418/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_1f540e0b94d8437dbbc39d567a1dee68/internal_photos/bs/2025/F/W/VGXMJRRjiqwxvQjF8BRg/morango-do-amor.png';
+    imageUrl = './assets/poor_score.jpg';
     message = 'CONTINUE ESTUDANDO! Esse é o seu morango do amor';
     category = 'poor';
   }
   
   // Atualizar elementos
   feedbackImage.src = imageUrl;
+  feedbackImage.style.maxWidth = "100%";
   feedbackMessage.textContent = message;
   
   // Remover classes anteriores e adicionar nova
@@ -177,7 +180,7 @@ function renderizarPlacar() {
   leaderboardList.innerHTML = "";
   placar.forEach((r, i) => {
     const li = document.createElement("li");
-    li.textContent = `${i + 1}. ${r.nome} — ${r.score} pts`;
+    li.textContent = `${r.nome} — ${r.score} pts`;
     leaderboardList.appendChild(li);
   });
 }
